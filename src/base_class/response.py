@@ -1,5 +1,4 @@
-from jsonschema import validate
-from src.enums.global_enums import GlobalErrorMessages as error
+from ..enums.global_enums import GlobalErrorMessages as error
 
 
 class Response():
@@ -9,11 +8,20 @@ class Response():
         self.response_json = resp.json()
         self.response_status_code = resp.status_code
 
+    #shema
+    # def validate(self, schema):
+    #     if isinstance(self.response_json, list):
+    #         for item in self.response_json:
+    #             validate(item, schema)
+    #     else: validate(self.response_json, schema)
+
+    #PYDANTIC
     def validate(self, schema):
         if isinstance(self.response_json, list):
             for item in self.response_json:
-                validate(item, schema)
-        else: validate(self.response_json, schema)
+                schema(**item)
+        else: schema(**self.response_json)
+
 
     def assert_status_code(self, exp_status_code):
         if isinstance(exp_status_code, list):
