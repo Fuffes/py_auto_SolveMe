@@ -4,9 +4,11 @@ from configuration import BASE_URL
 from src.pydantic_schemas.user import User
 
 
-def test_get_data(get_users):
+def test_get_data(get_users, make_num):
     data = Response(get_users)
     data.assert_status_code(200).validate(User)
+    print(make_num)
+
 
 
 # {'meta':

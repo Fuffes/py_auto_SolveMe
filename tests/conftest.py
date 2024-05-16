@@ -1,10 +1,20 @@
-import pytest
-import requests
+import random
 
-from configuration import BASE_URL
+import pytest
+
+
+def _calculate(a, b):
+    return a+b
 
 
 @pytest.fixture
-def get_users():
-    response = requests.get(BASE_URL)
-    return response
+def calculate():
+    return _calculate
+
+
+@pytest.fixture
+def make_num():
+    print("I am getting number")
+    num = random.randrange(1, 100, 5)
+    yield num
+    print(f"nummm {num}")
