@@ -1,3 +1,4 @@
+import pytest
 import requests
 from src.base_class.response import Response
 from configuration import BASE_URL
@@ -9,7 +10,19 @@ def test_get_data(get_users, make_num):
     data.assert_status_code(200).validate(User)
     print(make_num)
 
+@pytest.mark.skip("summary")
+def test_another_test():
+    assert 1==1
 
+
+@pytest.mark.parametrize("a, b, result", [
+    (1, 2, 3),
+    (12, -2, 10),
+    (-1, -1, -2),
+    ("v", -2, None)
+])
+def test_calculation(a, b, result, calculate):
+    assert calculate(a, b) == result
 
 # {'meta':
 #      {'pagination':

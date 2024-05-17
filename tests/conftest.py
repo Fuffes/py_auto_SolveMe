@@ -4,7 +4,10 @@ import pytest
 
 
 def _calculate(a, b):
-    return a+b
+    if isinstance(a,int) and isinstance(b, int):
+        return a+b
+    else:
+        return None
 
 
 @pytest.fixture
@@ -18,3 +21,4 @@ def make_num():
     num = random.randrange(1, 100, 5)
     yield num
     print(f"nummm {num}")
+
