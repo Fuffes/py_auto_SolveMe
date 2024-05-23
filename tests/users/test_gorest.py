@@ -12,6 +12,7 @@ def test_get_data(get_users, make_num):
 
 @pytest.mark.skip("summary")
 def test_another_test():
+    """test that 1==1"""
     assert 1==1
 
 
@@ -22,6 +23,7 @@ def test_another_test():
     ("v", -2, None)
 ])
 def test_calculation(a, b, result, calculate):
+    """test calculations"""
     assert calculate(a, b) == result
 
 # {'meta':
