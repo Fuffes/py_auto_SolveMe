@@ -1,9 +1,11 @@
 from pydantic import BaseModel, validate_call
 from datetime import date
-#
+
+
 class BookingDates(BaseModel):
     checkin: date
     checkout: date
+
 
 class Booking(BaseModel):
     firstname : str
