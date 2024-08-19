@@ -1,11 +1,12 @@
 from src.generators.local_gen import LocalGen
+from src.base_class.base_builder import Builer
 
-class UserGen():
+
+class UserGen(Builer):
 
     def __init__(self):
-        self.result = {}
+        super().__init__()
         self.reset()
-
 
     def set_status(self, status="-"):
         self.result["status"] = status
@@ -25,16 +26,12 @@ class UserGen():
         self.set_avatar()
         self.result["local"] = {
                 "en": LocalGen("en_US").build(),
-                "ru": LocalGen("ru_RU").build()
             }
         return self
 
 
-    def update_inner_generator(self, key, value):
-        self.result[key] = {value.build()}
 
-    def build(self):
-        return self.result
+
 
 
 
