@@ -14,6 +14,9 @@ pydantic = "^2.7.1"
 allure-pytest = "^2.13.5"
 faker = "^27.0.0"
 email-validator = "^2.2.0"
+sqlalchemy = "^2.0.32"
+pyglet = "^2.0.17"
+psycopg2 = "^2.9.9"
 
 
 [build-system]

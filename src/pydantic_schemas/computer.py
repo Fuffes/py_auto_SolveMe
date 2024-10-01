@@ -4,7 +4,7 @@ from src.enums.user_enums import Status
 from pydantic.types import PastDate, FutureDate, List, PaymentCardNumber
 from pydantic.networks import IPv4Network, IPv6Network
 from pydantic.color import Color
-from
+
 
 class Physical(BaseModel):
     color: Color
