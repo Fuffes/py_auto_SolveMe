@@ -10,6 +10,7 @@ def test_get_data(get_users, make_num):
     data.assert_status_code(200).validate(User)
     print(make_num)
 
+
 @pytest.mark.skip("summary")
 def test_another_test():
     """test that 1==1"""

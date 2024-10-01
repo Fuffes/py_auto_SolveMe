@@ -6,6 +6,7 @@ class Response():
     def __init__(self, resp):
         self.response = resp
         self.response_json = resp.json()
+        self.parsed_obj = None
         # self.response_data = self.response_json.get("data")
         self.response_status_code = resp.status_code
 
@@ -18,11 +19,20 @@ class Response():
 
     # TODO modify validate method to work with "data"
     #PYDANTIC
+    def validate_and_pars(self, schema):
+        if isinstance(self.response_json, list):
+            for item in self.response_json:
+                self.parsed_obj = schema.parse_obj(item)
+        else: schema.parse_obj(self.response_json)
+
     def validate(self, schema):
         if isinstance(self.response_json.get("data"), list):
             for item in self.response_json.get("data"):
                 schema(**item)
         else: schema(**self.response_json.get("data"))
+
+    def get_parsed_obj(self):
+        return self.parsed_obj
 
 
     def assert_status_code(self, exp_status_code):
